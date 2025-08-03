@@ -1,0 +1,12 @@
+Allowed libraries cpp00 -> cpp07
+
+<iostream> - std::cout, std::cin, std::cerr, std::endl
+<string> - std::string class and its methods
+<iomanip> - std::setw, std::setprecision, etc.
+<fstream> - std::ifstream, std::ofstream for file I/O
+<sstream> - std::stringstream, std::istringstream, std::ostringstream
+<cstdlib> - std::atoi, std::atof, exit(), rand(), srand()
+<cmath> - sqrt(), pow(), sin(), cos(), etc.
+<cctype> - isdigit(), isalpha(), toupper(), tolower()
+<cstring> - strlen(), strcmp(), strcpy() (though prefer C++ alternatives)
+<ctime> - time(), clock() for timing

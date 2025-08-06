@@ -6,7 +6,7 @@
 /*   By: yitani <yitani@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/03 22:01:15 by yitani            #+#    #+#             */
-/*   Updated: 2025/08/03 22:56:41 by yitani           ###   ########.fr       */
+/*   Updated: 2025/08/06 14:50:12 by yitani           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,25 +16,18 @@
 
 int	main(int argc, char **argv)
 {
-	char	*upper;
-	int		i;
-	int		j;
-
 	if (argc == 1)
 	{
 		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
-		return (1);
+		return (0);
 	}
-	for (i = 1; i < argc; i++)
+	for (int i = 1; i < argc; i++)
 	{
-		upper = new char[strlen(argv[i]) + 1];
-		for (j = 0; argv[i][j] != '\0'; j++)
+		for (int j = 0; argv[i][j] != '\0'; j++)
 		{
-			upper[j] = toupper(argv[i][j]);
+			argv[i][j] = toupper(argv[i][j]);
+			std::cout << argv[i][j];
 		}
-		upper[j] = '\0';
-		std::cout << upper;
-		delete[] upper;
 	}
 	std::cout << "" << std::endl;
 	return (0);

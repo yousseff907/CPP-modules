@@ -1,32 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yitani <yitani@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/03 22:01:15 by yitani            #+#    #+#             */
-/*   Updated: 2025/08/06 15:16:37 by yitani           ###   ########.fr       */
+/*   Created: 2025/08/06 15:15:13 by yitani            #+#    #+#             */
+/*   Updated: 2025/08/06 15:52:17 by yitani           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 
-int	main(int argc, char **argv)
+int main(void)
 {
-	if (argc == 1)
+	std::string	input;
+
+	while (input != "EXIT")
 	{
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
-		return (0);
+		std::cout << "Enter command (ADD, SEARCH, EXIT): ";
+		std::getline(std::cin, input);
+		std::cout << "You entered: " << input << std::endl;
 	}
-	for (int i = 1; i < argc; i++)
-	{
-		for (int j = 0; argv[i][j] != '\0'; j++)
-		{
-			argv[i][j] = toupper(argv[i][j]);
-			std::cout << argv[i][j];
-		}
-	}
-	std::cout << "" << std::endl;
-	return (0);
 }

@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yitani <yitani@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/06 15:15:13 by yitani            #+#    #+#             */
-/*   Updated: 2025/08/07 23:42:39 by yitani           ###   ########.fr       */
+/*   Created: 2025/08/07 23:43:32 by yitani            #+#    #+#             */
+/*   Updated: 2025/08/07 23:53:08 by yitani           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PhoneBook.hpp"
+#ifndef CONTACT_HPP
+# define CONTACT_HPP
 
-int main(void)
+# include <string>
+# include <iostream>
+
+class Contact
 {
-	std::string	input;
-	PhoneBook phonebook;
-	while (1)
-	{
-		std::cout << "Enter command (ADD, SEARCH, EXIT): ";
-		std::getline(std::cin, input);
-		std::cout << "You entered: " << input << std::endl;
-		if (input == "EXIT")
-			break ;
-		if (input == "SEARCH")
-			phonebook.search();
-		if (input == "ADD")
-			phonebook.add();
-	}
-}
+	private:
+		std::string firstName;
+	public:
+		std::string	getFirstName(void) const;
+		void		setFirstName(std::string firstName);
+};
+
+#endif

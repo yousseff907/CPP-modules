@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yitani <yitani@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/06 15:15:13 by yitani            #+#    #+#             */
-/*   Updated: 2025/08/07 23:42:39 by yitani           ###   ########.fr       */
+/*   Created: 2025/08/07 23:43:44 by yitani            #+#    #+#             */
+/*   Updated: 2025/08/07 23:53:05 by yitani           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PhoneBook.hpp"
+#include "Contact.hpp"
 
-int main(void)
+std::string	Contact::getFirstName(void) const
 {
-	std::string	input;
-	PhoneBook phonebook;
-	while (1)
-	{
-		std::cout << "Enter command (ADD, SEARCH, EXIT): ";
-		std::getline(std::cin, input);
-		std::cout << "You entered: " << input << std::endl;
-		if (input == "EXIT")
-			break ;
-		if (input == "SEARCH")
-			phonebook.search();
-		if (input == "ADD")
-			phonebook.add();
-	}
+	return (this->firstName);
+}
+
+void	Contact::setFirstName(std::string firstName)
+{
+	this->firstName = firstName;
 }

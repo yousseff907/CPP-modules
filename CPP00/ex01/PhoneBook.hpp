@@ -6,7 +6,7 @@
 /*   By: yitani <yitani@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 23:30:22 by yitani            #+#    #+#             */
-/*   Updated: 2025/08/07 23:45:06 by yitani           ###   ########.fr       */
+/*   Updated: 2025/08/10 19:58:15 by yitani           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,5 @@ class PhoneBook
 private:
 
 public:
-	PhoneBook();
-	~PhoneBook();
+
 };

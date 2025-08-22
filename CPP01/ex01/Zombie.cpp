@@ -1,19 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   randomChump.cpp                                    :+:      :+:    :+:   */
+/*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yitani <yitani@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/22 17:48:51 by yitani            #+#    #+#             */
-/*   Updated: 2025/08/22 21:14:49 by yitani           ###   ########.fr       */
+/*   Created: 2025/08/22 17:48:54 by yitani            #+#    #+#             */
+/*   Updated: 2025/08/22 23:57:36 by yitani           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-void	randomChump(std::string name)
+Zombie::Zombie(void)
 {
-	Zombie zombie(name);
-	zombie.announce();
+	this->name = "unnamed";
+	std::cout << this->name << " has been created." << std::endl;
+}
+
+Zombie::~Zombie(void)
+{
+	std::cout << this->name << " has been destroyed." << std::endl;
+}
+
+void	Zombie::announce(void)
+{
+	std::cout << this->name << ": BraiiiiiiinnnzzzZ..." << std::endl;
+}
+
+void	Zombie::setName(std::string name)
+{
+    this->name = name;
+    std::cout << "Zombie renamed to " << name << std::endl;
 }

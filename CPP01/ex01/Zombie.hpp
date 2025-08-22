@@ -6,7 +6,7 @@
 /*   By: yitani <yitani@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 17:48:57 by yitani            #+#    #+#             */
-/*   Updated: 2025/08/22 21:45:44 by yitani           ###   ########.fr       */
+/*   Updated: 2025/08/23 00:08:25 by yitani           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ class Zombie
 	private:
 		std::string	name;
 	public:
+		void		setName(std::string name);
 		void		announce(void);
-		Zombie(std::string name);
+		Zombie();
 		~Zombie();
 };
 
-Zombie*	newZombie(std::string name);
-void	randomChump(std::string name);
+Zombie* zombieHorde(int N, std::string name);
 
 #endif

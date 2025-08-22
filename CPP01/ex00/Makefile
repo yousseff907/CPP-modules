@@ -6,7 +6,7 @@
 #    By: yitani <yitani@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/22 17:47:19 by yitani            #+#    #+#              #
-#    Updated: 2025/08/22 17:50:05 by yitani           ###   ########.fr        #
+#    Updated: 2025/08/22 21:13:01 by yitani           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME = BraiiiiiiinnnzzzZ
 CPP = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRCS = 
+SRCS = Zombie.cpp newZombie.cpp randomChump.cpp main.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)

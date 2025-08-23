@@ -6,7 +6,7 @@
 /*   By: yitani <yitani@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 18:40:53 by yitani            #+#    #+#             */
-/*   Updated: 2025/08/23 20:34:53 by yitani           ###   ########.fr       */
+/*   Updated: 2025/08/24 00:46:37 by yitani           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void Harl::complain(std::string level)
 		if (levels[i] == level)
 		{
 			(this->*functions[i])();
+			return ;
 		}
 	}
 }

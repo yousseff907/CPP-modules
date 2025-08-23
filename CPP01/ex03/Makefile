@@ -6,16 +6,16 @@
 #    By: yitani <yitani@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/23 01:29:36 by yitani            #+#    #+#              #
-#    Updated: 2025/08/23 01:44:31 by yitani           ###   ########.fr        #
+#    Updated: 2025/08/23 16:39:07 by yitani           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME =  
+NAME =  Unnecessary_violence
 
 CPP = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRCS = 
+SRCS = main.cpp Weapon.cpp HumanA.cpp HumanB.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)

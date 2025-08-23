@@ -5,17 +5,17 @@
 #                                                     +:+ +:+         +:+      #
 #    By: yitani <yitani@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/08/22 17:47:19 by yitani            #+#    #+#              #
-#    Updated: 2025/08/23 18:41:54 by yitani           ###   ########.fr        #
+#    Created: 2025/08/23 18:40:59 by yitani            #+#    #+#              #
+#    Updated: 2025/08/23 22:56:07 by yitani           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = Moar-brainz!
+NAME =  harlFilter
 
 CPP = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRCS = Zombie.cpp zombieHorde.cpp main.cpp
+SRCS = main.cpp Harl.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)

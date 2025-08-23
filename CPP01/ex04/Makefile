@@ -5,17 +5,17 @@
 #                                                     +:+ +:+         +:+      #
 #    By: yitani <yitani@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/08/22 17:47:19 by yitani            #+#    #+#              #
-#    Updated: 2025/08/23 18:41:54 by yitani           ###   ########.fr        #
+#    Created: 2025/08/23 17:41:22 by yitani            #+#    #+#              #
+#    Updated: 2025/08/23 20:40:39 by yitani           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = Moar-brainz!
+NAME =  Sed_is_for_losers
 
 CPP = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRCS = Zombie.cpp zombieHorde.cpp main.cpp
+SRCS = main.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)

@@ -6,11 +6,11 @@
 #    By: yitani <yitani@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/23 01:29:36 by yitani            #+#    #+#              #
-#    Updated: 2025/08/23 16:39:07 by yitani           ###   ########.fr        #
+#    Updated: 2025/08/23 18:41:46 by yitani           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME =  Unnecessary_violence
+NAME =  Unnecessary-violence
 
 CPP = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98

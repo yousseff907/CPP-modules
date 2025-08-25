@@ -6,11 +6,11 @@
 #    By: yitani <yitani@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/24 00:50:26 by yitani            #+#    #+#              #
-#    Updated: 2025/08/25 21:34:25 by yitani           ###   ########.fr        #
+#    Updated: 2025/08/25 21:34:14 by yitani           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = fixed_point_conversion
+NAME = complete_fixed_point
 
 CPP = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98

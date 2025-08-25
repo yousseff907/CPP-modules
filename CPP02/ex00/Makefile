@@ -6,11 +6,11 @@
 #    By: yitani <yitani@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/24 00:50:26 by yitani            #+#    #+#              #
-#    Updated: 2025/08/25 14:03:38 by yitani           ###   ########.fr        #
+#    Updated: 2025/08/25 21:34:39 by yitani           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = My-First-Class-in-Orthodox-Canonical-Form
+NAME = orthodox_canonical_form
 
 CPP = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98

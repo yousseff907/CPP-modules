@@ -6,13 +6,13 @@
 /*   By: yitani <yitani@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 01:46:14 by yitani            #+#    #+#             */
-/*   Updated: 2025/08/23 16:40:09 by yitani           ###   ########.fr       */
+/*   Updated: 2025/08/25 14:04:43 by yitani           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "HumanB.hpp"
 
-HumanB::HumanB(std::string name)	:	name(name)
+HumanB::HumanB(std::string name)	:	name(name), weapon(NULL)
 {
 	std::cout << "HumanB " << name << " has been created unarmed" << std::endl;
 }

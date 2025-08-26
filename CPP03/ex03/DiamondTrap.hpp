@@ -6,12 +6,12 @@
 /*   By: yitani <yitani@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 21:01:39 by yitani            #+#    #+#             */
-/*   Updated: 2025/08/26 21:07:02 by yitani           ###   ########.fr       */
+/*   Updated: 2025/08/26 21:38:56 by yitani           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DIAMONDTRAP_HPP
-# define DIAMONTRAP_HPP
+# define DIAMONDTRAP_HPP
 
 # include "ScavTrap.hpp"
 # include "FragTrap.hpp"

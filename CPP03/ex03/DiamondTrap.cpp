@@ -6,13 +6,13 @@
 /*   By: yitani <yitani@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 19:36:58 by yitani            #+#    #+#             */
-/*   Updated: 2025/08/26 21:32:20 by yitani           ###   ########.fr       */
+/*   Updated: 2025/08/26 21:49:34 by yitani           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap(std::string name)	:	name(name), ClapTrap(name + "_clap_name"), ScavTrap(name), FragTrap(name)
+DiamondTrap::DiamondTrap(std::string name)	:	ClapTrap(name + "_clap_name"), ScavTrap(name), FragTrap(name), name(name)
 {
 	hitPoints = 100;
 	energyPoints = 50;
@@ -20,7 +20,7 @@ DiamondTrap::DiamondTrap(std::string name)	:	name(name), ClapTrap(name + "_clap_
 	std::cout << "DiamondTrap " << name << " has been created" << std::endl;
 }
 
-DiamondTrap::DiamondTrap(void)	:	name("default"), ClapTrap("default_clap_name"), ScavTrap(), FragTrap()
+DiamondTrap::DiamondTrap(void)	:	ClapTrap("default_clap_name"), ScavTrap(), FragTrap(), name("default")
 {
 	hitPoints = 100;
 	energyPoints = 50;
@@ -28,7 +28,7 @@ DiamondTrap::DiamondTrap(void)	:	name("default"), ClapTrap("default_clap_name"),
 	std::cout << "DiamondTrap default constructor called" << std::endl;
 }
 
-DiamondTrap::DiamondTrap(const DiamondTrap &other)	:	name(other.name), ClapTrap(other), ScavTrap(other), FragTrap(other)
+DiamondTrap::DiamondTrap(const DiamondTrap &other)	:	ClapTrap(other), ScavTrap(other), FragTrap(other), name(other.name)
 {
 	hitPoints = other.hitPoints;
 	energyPoints = other.energyPoints;

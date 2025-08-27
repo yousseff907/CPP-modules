@@ -6,13 +6,13 @@
 /*   By: yitani <yitani@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 14:53:45 by yitani            #+#    #+#             */
-/*   Updated: 2025/08/27 19:29:36 by yitani           ###   ########.fr       */
+/*   Updated: 2025/08/27 19:31:27 by yitani           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 
-Cat::Cat(void)	: Animal()
+Cat::Cat(void)	: Animal(), _Brain(new Brain)
 {
 	type = "Cat";
 	std::cout << "Cat default constructor called" << std::endl;

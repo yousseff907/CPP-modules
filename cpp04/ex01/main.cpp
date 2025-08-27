@@ -6,7 +6,7 @@
 /*   By: yitani <yitani@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 15:31:38 by yitani            #+#    #+#             */
-/*   Updated: 2025/08/27 15:31:39 by yitani           ###   ########.fr       */
+/*   Updated: 2025/08/27 23:13:29 by yitani           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,119 +16,64 @@
 #include "WrongAnimal.hpp"
 #include "WrongCat.hpp"
 
-int main(void)
+int	main(void)
 {
-	std::cout << "Creating objects directly" << std::endl;
-	Animal animal;
-	Dog dog;
-	Cat cat;
+	const int ARRAY_SIZE = 4;
+	Animal *animals[ARRAY_SIZE];
 
-	std::cout << std::endl;
+	std::cout << "Creating array of animals..." << std::endl;
 
-	std::cout << "Direct method calls" << std::endl;
-	std::cout << animal.getType() << " makes: ";
-	animal.makeSound();
-	std::cout << dog.getType() << " makes: ";
-	dog.makeSound();
-	std::cout << cat.getType() << " makes: ";
-	cat.makeSound();
+	for (int i = 0; i < ARRAY_SIZE / 2; i++)
+		animals[i] = new Dog();
 
-	std::cout << std::endl;
+	for (int i = ARRAY_SIZE / 2; i < ARRAY_SIZE; i++)
+		animals[i] = new Cat();
 
-	std::cout << "Creating objects through base pointers" << std::endl;
-	const Animal* meta = new Animal();
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
-
-	std::cout << std::endl;
-
-	std::cout << "Testing getType through base pointers" << std::endl;
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
-
-	std::cout << std::endl;
-
-	std::cout << "Testing makeSound - virtual dispatch" << std::endl;
-	i->makeSound();
-	j->makeSound();
-	meta->makeSound();
-
-	std::cout << std::endl;
-
-	std::cout << "Creating WrongAnimal objects" << std::endl;
-	WrongAnimal wrongAnimal;
-	WrongCat wrongCat;
-
-	std::cout << std::endl;
-
-	std::cout << "Direct calls on Wrong classes" << std::endl;
-	std::cout << wrongAnimal.getType() << " makes: ";
-	wrongAnimal.makeSound();
-	std::cout << wrongCat.getType() << " makes: ";
-	wrongCat.makeSound();
-
-	std::cout << std::endl;
-
-	std::cout << "Creating WrongCat through base pointer" << std::endl;
-	const WrongAnimal* wrongPtr = new WrongCat();
-
-	std::cout << std::endl;
-
-	std::cout << "Testing broken polymorphism" << std::endl;
-	std::cout << wrongPtr->getType() << " " << std::endl;
-	wrongPtr->makeSound();
-
-	std::cout << std::endl;
-
-	std::cout << "Array demonstration - correct polymorphism" << std::endl;
-	Animal* animals[3] = {
-		new Animal(),
-		new Dog(),
-		new Cat()
-	};
-
-	for (int k = 0; k < 3; k++) {
-		std::cout << animals[k]->getType() << ": ";
-		animals[k]->makeSound();
+	std::cout << "\nTesting sounds..." << std::endl;
+	for (int i = 0; i < ARRAY_SIZE; i++)
+	{
+		std::cout << animals[i]->getType() << ": ";
+		animals[i]->makeSound();
 	}
 
-	std::cout << std::endl;
+	std::cout << "\nDeleting animals..." << std::endl;
+	for (int i = 0; i < ARRAY_SIZE; i++)
+		delete animals[i];
 
-	std::cout << "Array demonstration - broken polymorphism" << std::endl;
-	WrongAnimal* wrongAnimals[2] = {
-		new WrongAnimal(),
-		new WrongCat()
-	};
+	std::cout << "\n=== Testing Deep Copy ===" << std::endl;
 
-	for (int k = 0; k < 2; k++) {
-		std::cout << wrongAnimals[k]->getType() << ": ";
-		wrongAnimals[k]->makeSound();
-	}
-
-	std::cout << std::endl;
-
-	std::cout << "Copy constructor test" << std::endl;
+	std::cout << "\nTesting Dog deep copy:" << std::endl;
 	Dog originalDog;
 	Dog copiedDog(originalDog);
-	std::cout << "Original: ";
+	Dog assignedDog;
+	assignedDog = originalDog;
+
+	std::cout << "Original Dog: ";
 	originalDog.makeSound();
-	std::cout << "Copy: ";
+	std::cout << "Copied Dog: ";
 	copiedDog.makeSound();
+	std::cout << "Assigned Dog: ";
+	assignedDog.makeSound();
 
-	std::cout << std::endl;
+	std::cout << "\nTesting Cat deep copy:" << std::endl;
+	Cat originalCat;
+	Cat copiedCat(originalCat);
+	Cat assignedCat;
+	assignedCat = originalCat;
 
-	std::cout << "Cleanup - deleting objects" << std::endl;
-	delete meta;
-	delete j;
-	delete i;
-	delete wrongPtr;
+	std::cout << "Original Cat: ";
+	originalCat.makeSound();
+	std::cout << "Copied Cat: ";
+	copiedCat.makeSound();
+	std::cout << "Assigned Cat: ";
+	assignedCat.makeSound();
 
-	for (int k = 0; k < 3; k++) {
-		delete animals[k];
-	}
-	for (int k = 0; k < 2; k++) {
-		delete wrongAnimals[k];
-	}
+	std::cout << "\n=== Testing polymorphic deletion ===" << std::endl;
+	const Animal *testDog = new Dog();
+	const Animal *testCat = new Cat();
+
+	delete testDog;
+	delete testCat;
 
 	return (0);
 }

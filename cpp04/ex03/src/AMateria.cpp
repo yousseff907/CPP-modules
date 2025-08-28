@@ -6,11 +6,12 @@
 /*   By: yitani <yitani@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 18:18:11 by yitani            #+#    #+#             */
-/*   Updated: 2025/08/28 18:42:07 by yitani           ###   ########.fr       */
+/*   Updated: 2025/08/28 19:48:30 by yitani           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/AMateria.hpp"
+#include "../inc/ICharacter.hpp"
 
 AMateria::AMateria(void)	:	type("")
 {
@@ -32,9 +33,21 @@ AMateria	&AMateria::operator=(const AMateria &other)
 	if (this != &other)
 		this->type = other.type;
 	std::cout << "AMateria: " << type << " copy assignment operator called" << std::endl;
+
+	return (*this);
 }
 
 AMateria::~AMateria(void)
 {
 	std::cout << "AMateria: Default destructor called" << std::endl;
+}
+
+const std::string&	AMateria::getType() const
+{
+	return this->type;
+}
+
+void AMateria::use(ICharacter &target)
+{
+	std::cout << "AMateria " << this->type << " used on " << target.getName() << std::endl;
 }

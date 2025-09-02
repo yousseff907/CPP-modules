@@ -6,7 +6,7 @@
 /*   By: yitani <yitani@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 00:00:00 by yitani            #+#    #+#             */
-/*   Updated: 2025/09/02 11:17:21 by yitani           ###   ########.fr       */
+/*   Updated: 2025/09/03 00:05:54 by yitani           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <iostream>
 # include <string>
 # include <exception>
+
+class Form;
 
 class Bureaucrat
 {
@@ -35,6 +37,8 @@ class Bureaucrat
 
 		void				incrementGrade();
 		void				decrementGrade();
+
+		void				signForm(Form& form);
 
 		class GradeTooHighException : public std::exception
 		{

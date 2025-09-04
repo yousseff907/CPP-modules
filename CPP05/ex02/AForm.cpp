@@ -6,7 +6,7 @@
 /*   By: yitani <yitani@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 11:25:46 by yitani            #+#    #+#             */
-/*   Updated: 2025/09/04 00:03:01 by yitani           ###   ########.fr       */
+/*   Updated: 2025/09/04 16:04:43 by yitani           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,11 @@ const char	*AForm::GradeTooHighException::what() const throw()
 const char	*AForm::GradeTooLowException::what() const throw()
 {
 	return ("Grade is too low (maximum grade is 150)");
+}
+
+const char	*AForm::FormNotSignedException::what() const throw()
+{
+	return ("Form is not signed");
 }
 
 AForm::AForm(void)

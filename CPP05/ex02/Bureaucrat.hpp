@@ -6,7 +6,7 @@
 /*   By: yitani <yitani@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 00:00:00 by yitani            #+#    #+#             */
-/*   Updated: 2025/09/04 14:43:03 by yitani           ###   ########.fr       */
+/*   Updated: 2025/09/04 15:15:26 by yitani           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ class Bureaucrat
 		void				decrementGrade();
 
 		void				signForm(AForm& Aform);
+
+		void				executeForm(AForm const & form) const;
 
 		class GradeTooHighException : public std::exception
 		{

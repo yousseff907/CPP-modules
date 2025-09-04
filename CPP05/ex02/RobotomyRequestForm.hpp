@@ -6,7 +6,7 @@
 /*   By: yitani <yitani@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 14:53:00 by yitani            #+#    #+#             */
-/*   Updated: 2025/09/04 16:13:04 by yitani           ###   ########.fr       */
+/*   Updated: 2025/09/04 17:40:27 by yitani           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 # define ROBOTOMYREQUESTFORM_HPP
 
 # include "AForm.hpp"
-# include <cstdlib>
-# include <ctime>
 
 class RobotomyRequestForm : public AForm
 {

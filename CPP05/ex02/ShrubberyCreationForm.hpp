@@ -6,7 +6,7 @@
 /*   By: yitani <yitani@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 14:52:38 by yitani            #+#    #+#             */
-/*   Updated: 2025/09/04 15:09:58 by yitani           ###   ########.fr       */
+/*   Updated: 2025/09/04 17:44:43 by yitani           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ class ShrubberyCreationForm : public AForm
 		ShrubberyCreationForm& operator=(const ShrubberyCreationForm& other);
 		~ShrubberyCreationForm();
 
-		void execute(Bureaucrat const & executor);
+		void execute(Bureaucrat const & executor) const;
 
 		const std::string& getTarget() const;
 

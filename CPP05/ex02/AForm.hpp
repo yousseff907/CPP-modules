@@ -6,7 +6,7 @@
 /*   By: yitani <yitani@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 00:00:00 by yitani            #+#    #+#             */
-/*   Updated: 2025/09/03 10:56:10 by yitani           ###   ########.fr       */
+/*   Updated: 2025/09/04 15:01:51 by yitani           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ class AForm
 
 		void				beSigned(const Bureaucrat& bureaucrat);
 
+		virtual void		execute(Bureaucrat const & executor) = 0;
+
 		class GradeTooHighException : public std::exception
 		{
 			public:
@@ -54,6 +56,6 @@ class AForm
 		};
 };
 
-std::ostream& operator<<(std::ostream& os, const Form& form);
+std::ostream& operator<<(std::ostream& os, const AForm& form);
 
 #endif

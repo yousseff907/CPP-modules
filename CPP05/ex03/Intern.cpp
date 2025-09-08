@@ -6,7 +6,7 @@
 /*   By: yitani <yitani@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 17:58:46 by yitani            #+#    #+#             */
-/*   Updated: 2025/09/07 02:08:30 by yitani           ###   ########.fr       */
+/*   Updated: 2025/09/08 18:46:44 by yitani           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,15 @@ AForm *Intern::createPresidentialPardonForm(const std::string &target) const
 	return (new PresidentialPardonForm(target));
 }
 
-Intern::Intern(void) : formCreators{&Intern::createShrubberyCreationForm,
-									&Intern::createRobotomyRequestForm,
-									&Intern::createPresidentialPardonForm},
-					   formNames{"shrubbery creation", "robotomy request", "presidential pardon"}
+Intern::Intern(void)
 {
+	formCreators[0] = &Intern::createShrubberyCreationForm;
+	formCreators[1] = &Intern::createRobotomyRequestForm;
+	formCreators[2] = &Intern::createPresidentialPardonForm;
+
+	formNames[0] = "shrubbery creation";
+	formNames[1] = "robotomy request";
+	formNames[2] = "presidential pardon";
 
 	std::cout << "Intern default constructor called" << std::endl;
 }
@@ -78,10 +82,8 @@ AForm*	Intern::makeForm(const std::string &formName, const std::string &target)
 			return ((this->*formCreators[i])(target));
 		}
 	}
-	throw (Intern::FormNotFoundException());
-}
+	
+	std::cerr << "Form not found" << std::endl;
 
-const char *Intern::FormNotFoundException::what() const throw()
-{
-	return ("Form not found");
+	return (NULL);
 }

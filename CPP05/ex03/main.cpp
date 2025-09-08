@@ -5,131 +5,72 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yitani <yitani@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/03 10:56:23 by yitani            #+#    #+#             */
-/*   Updated: 2025/09/04 17:55:38 by yitani           ###   ########.fr       */
+/*   Created: 2025/09/08 00:00:00 by yitani            #+#    #+#             */
+/*   Updated: 2025/09/08 18:45:04 by yitani           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
-#include "ShrubberyCreationForm.hpp"
-#include "RobotomyRequestForm.hpp"
-#include "PresidentialPardonForm.hpp"
+#include "Intern.hpp"
+#include <sstream>
 
 int main(void)
 {
-	std::cout << "=== CPP05 EX02: CONCRETE FORMS TEST ===" << std::endl;
+	std::cout << "=== INTERN TEST CASES - EDGE SCENARIOS ===" << std::endl;
 
-	// Create bureaucrats with different grades
-	Bureaucrat intern("Intern", 150);
-	Bureaucrat manager("Manager", 50);  
-	Bureaucrat president("President", 1);
+	Intern intern;
+	Bureaucrat boss("Boss", 5);
 
-	std::cout << "\n--- BUREAUCRATS ---" << std::endl;
-	std::cout << intern << std::endl;
-	std::cout << manager << std::endl;
-	std::cout << president << std::endl;
-
-	// Test 1: ShrubberyCreationForm
-	std::cout << "\n=== SHRUBBERY CREATION FORM TESTS ===" << std::endl;
-	try 
+	std::cout << "\n--- Test 1: Partial string matching ---" << std::endl;
+	AForm *form1 = intern.makeForm("robotomy", "C3PO");
+	if (form1)
 	{
-		ShrubberyCreationForm garden("garden");
-		std::cout << "Form: " << garden << std::endl;
-
-		// Test signing with insufficient grade
-		std::cout << "\n--- Test: Intern tries to sign (should fail) ---" << std::endl;
-		intern.signForm(garden);
-
-		// Test signing with sufficient grade
-		std::cout << "\n--- Test: Manager signs (should succeed) ---" << std::endl;
-		manager.signForm(garden);
-
-		// Test execution
-		std::cout << "\n--- Test: Manager executes (should succeed) ---" << std::endl;
-		manager.executeForm(garden);
-
-		// Test execution on unsigned form
-		std::cout << "\n--- Test: Execute unsigned form ---" << std::endl;
-		ShrubberyCreationForm unsigned_form("unsigned");
-		manager.executeForm(unsigned_form);
-	}
-	catch (const std::exception& e)
-	{
-		std::cout << "Exception: " << e.what() << std::endl;
+		delete form1;
 	}
 
-	// Test 2: RobotomyRequestForm
-	std::cout << "\n=== ROBOTOMY REQUEST FORM TESTS ===" << std::endl;
-	try
+	std::cout << "\n--- Test 2: Form names with spaces ---" << std::endl;
+	AForm *form2 = intern.makeForm("  shrubbery creation  ", "garden");
+	if (form2)
 	{
-		RobotomyRequestForm robot("Bender");
-		std::cout << "Form: " << robot << std::endl;
-
-		std::cout << "\n--- Test: Manager signs and executes (should succeed) ---" << std::endl;
-		manager.signForm(robot);
-		manager.executeForm(robot);
-
-		// Test multiple executions to see alternating success/failure
-		std::cout << "\n--- Test: Multiple executions (alternating results) ---" << std::endl;
-		for (int i = 0; i < 4; i++)
-		{
-			std::cout << "Execution " << (i + 1) << ": ";
-			manager.executeForm(robot);
-		}
-	}
-	catch (const std::exception& e)
-	{
-		std::cout << "Exception: " << e.what() << std::endl;
+		delete form2;
 	}
 
-	// Test 3: PresidentialPardonForm  
-	std::cout << "\n=== PRESIDENTIAL PARDON FORM TESTS ===" << std::endl;
-	try
+	std::cout << "\n--- Test 3: Special target names ---" << std::endl;
+	AForm *form3 = intern.makeForm("presidential pardon", "Arthur-Dent@Earth.com");
+	if (form3)
 	{
-		PresidentialPardonForm pardon("Arthur Dent");
-		std::cout << "Form: " << pardon << std::endl;
-
-		// Test insufficient grade for execution
-		std::cout << "\n--- Test: Manager tries to execute (should fail - grade too low) ---" << std::endl;
-		manager.signForm(pardon);
-		manager.executeForm(pardon);
-	}
-	catch (const std::exception& e)
-	{
-		std::cout << "Exception: " << e.what() << std::endl;
+		std::cout << *form3 << std::endl;
+		boss.signForm(*form3);
+		boss.executeForm(*form3);
+		delete form3;
 	}
 
-	try
+	std::cout << "\n--- Test 4: Extremely long target ---" << std::endl;
+	AForm *form4 = intern.makeForm("robotomy request",
+								   "VeryLongRobotNameThatGoesOnAndOnAndOnForeverAndEverUntilItBecomesRidiculous");
+	if (form4)
 	{
-		PresidentialPardonForm pardon2("Ford Prefect");
-		std::cout << "\n--- Test: President signs and executes (should succeed) ---" << std::endl;
-		president.signForm(pardon2);
-		president.executeForm(pardon2);
-	}
-	catch (const std::exception& e)
-	{
-		std::cout << "Exception: " << e.what() << std::endl;
+		boss.signForm(*form4);
+		boss.executeForm(*form4);
+		delete form4;
 	}
 
-	// Test 4: Grade boundary tests
-	std::cout << "\n=== BOUNDARY TESTS ===" << std::endl;
-	try
+	std::cout << "\n--- Test 5: Numbers in form names ---" << std::endl;
+	AForm *form5 = intern.makeForm("form27b", "office");
+	if (form5)
 	{
-		// Test exact grade boundaries
-		Bureaucrat exact_signer("ExactSigner", 25);  // Exact grade for Presidential signing
-		Bureaucrat exact_executor("ExactExecutor", 5); // Exact grade for Presidential execution
-
-		PresidentialPardonForm boundary_test("Boundary Test");
-		
-		exact_signer.signForm(boundary_test);
-		exact_executor.executeForm(boundary_test);
-	}
-	catch (const std::exception& e)
-	{
-		std::cout << "Exception: " << e.what() << std::endl;
+		delete form5;
 	}
 
-	std::cout << "\n=== ALL TESTS COMPLETED ===" << std::endl;
+	std::cout << "\n--- Test 6: Empty target ---" << std::endl;
+	AForm *form7 = intern.makeForm("robotomy request", "");
+	if (form7)
+	{
+		std::cout << *form7 << std::endl;
+		delete form7;
+	}
+
+	std::cout << "\n=== EDGE TESTS COMPLETE ===" << std::endl;
 	return 0;
 }

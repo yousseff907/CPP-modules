@@ -6,7 +6,7 @@
 /*   By: yitani <yitani@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 00:00:00 by yitani            #+#    #+#             */
-/*   Updated: 2025/09/07 01:12:12 by yitani           ###   ########.fr       */
+/*   Updated: 2025/09/08 18:45:41 by yitani           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,6 @@ class Intern
 		~Intern();
 
 		AForm*	makeForm(const std::string& formName, const std::string& target);
-
-		class FormNotFoundException : public std::exception
-		{
-			public:
-				virtual const char* what() const throw();
-		};
 };
 
 #endif

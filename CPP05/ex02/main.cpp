@@ -6,7 +6,7 @@
 /*   By: yitani <yitani@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 10:56:23 by yitani            #+#    #+#             */
-/*   Updated: 2025/09/04 17:55:38 by yitani           ###   ########.fr       */
+/*   Updated: 2025/09/23 14:33:04 by yitani           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int main(void)
 {
 	std::cout << "=== CPP05 EX02: CONCRETE FORMS TEST ===" << std::endl;
 
-	// Create bureaucrats with different grades
 	Bureaucrat intern("Intern", 150);
 	Bureaucrat manager("Manager", 50);  
 	Bureaucrat president("President", 1);
@@ -30,26 +29,21 @@ int main(void)
 	std::cout << manager << std::endl;
 	std::cout << president << std::endl;
 
-	// Test 1: ShrubberyCreationForm
 	std::cout << "\n=== SHRUBBERY CREATION FORM TESTS ===" << std::endl;
 	try 
 	{
 		ShrubberyCreationForm garden("garden");
 		std::cout << "Form: " << garden << std::endl;
 
-		// Test signing with insufficient grade
 		std::cout << "\n--- Test: Intern tries to sign (should fail) ---" << std::endl;
 		intern.signForm(garden);
 
-		// Test signing with sufficient grade
 		std::cout << "\n--- Test: Manager signs (should succeed) ---" << std::endl;
 		manager.signForm(garden);
 
-		// Test execution
 		std::cout << "\n--- Test: Manager executes (should succeed) ---" << std::endl;
 		manager.executeForm(garden);
 
-		// Test execution on unsigned form
 		std::cout << "\n--- Test: Execute unsigned form ---" << std::endl;
 		ShrubberyCreationForm unsigned_form("unsigned");
 		manager.executeForm(unsigned_form);
@@ -59,7 +53,6 @@ int main(void)
 		std::cout << "Exception: " << e.what() << std::endl;
 	}
 
-	// Test 2: RobotomyRequestForm
 	std::cout << "\n=== ROBOTOMY REQUEST FORM TESTS ===" << std::endl;
 	try
 	{
@@ -70,7 +63,6 @@ int main(void)
 		manager.signForm(robot);
 		manager.executeForm(robot);
 
-		// Test multiple executions to see alternating success/failure
 		std::cout << "\n--- Test: Multiple executions (alternating results) ---" << std::endl;
 		for (int i = 0; i < 4; i++)
 		{
@@ -83,14 +75,12 @@ int main(void)
 		std::cout << "Exception: " << e.what() << std::endl;
 	}
 
-	// Test 3: PresidentialPardonForm  
 	std::cout << "\n=== PRESIDENTIAL PARDON FORM TESTS ===" << std::endl;
 	try
 	{
 		PresidentialPardonForm pardon("Arthur Dent");
 		std::cout << "Form: " << pardon << std::endl;
 
-		// Test insufficient grade for execution
 		std::cout << "\n--- Test: Manager tries to execute (should fail - grade too low) ---" << std::endl;
 		manager.signForm(pardon);
 		manager.executeForm(pardon);
@@ -112,13 +102,11 @@ int main(void)
 		std::cout << "Exception: " << e.what() << std::endl;
 	}
 
-	// Test 4: Grade boundary tests
 	std::cout << "\n=== BOUNDARY TESTS ===" << std::endl;
 	try
 	{
-		// Test exact grade boundaries
-		Bureaucrat exact_signer("ExactSigner", 25);  // Exact grade for Presidential signing
-		Bureaucrat exact_executor("ExactExecutor", 5); // Exact grade for Presidential execution
+		Bureaucrat exact_signer("ExactSigner", 25);
+		Bureaucrat exact_executor("ExactExecutor", 5);
 
 		PresidentialPardonForm boundary_test("Boundary Test");
 		

@@ -6,11 +6,11 @@
 #    By: yitani <yitani@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/27 14:54:07 by yitani            #+#    #+#              #
-#    Updated: 2025/09/08 18:30:52 by yitani           ###   ########.fr        #
+#    Updated: 2025/09/23 14:36:20 by yitani           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = FormFactory
+NAME = InternFactory
 
 CPP = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98

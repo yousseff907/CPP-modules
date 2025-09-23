@@ -6,7 +6,7 @@
 /*   By: yitani <yitani@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 00:00:00 by yitani            #+#    #+#             */
-/*   Updated: 2025/09/03 10:36:10 by yitani           ###   ########.fr       */
+/*   Updated: 2025/09/23 14:31:11 by yitani           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ int main(void)
 {
 	std::cout << "=== EXERCISE 01: FORMS AND BUREAUCRATS ===" << std::endl;
 
-	// Test 1: Valid form creation
 	std::cout << "\n--- Test 1: Creating valid forms ---" << std::endl;
 	try
 	{
@@ -29,7 +28,6 @@ int main(void)
 		std::cout << "Error: " << e.what() << std::endl;
 	}
 
-	// Test 2: Invalid form creation
 	std::cout << "\n--- Test 2: Invalid form (grade too high) ---" << std::endl;
 	try
 	{
@@ -50,7 +48,6 @@ int main(void)
 		std::cout << "Error: " << e.what() << std::endl;
 	}
 
-	// Test 4: Successful signing
 	std::cout << "\n--- Test 4: Successful signing ---" << std::endl;
 	try
 	{
@@ -66,7 +63,6 @@ int main(void)
 		std::cout << "Error: " << e.what() << std::endl;
 	}
 
-	// Test 5: Failed signing (grade too low)
 	std::cout << "\n--- Test 5: Failed signing (grade too low) ---" << std::endl;
 	try
 	{
@@ -82,7 +78,6 @@ int main(void)
 		std::cout << "Error: " << e.what() << std::endl;
 	}
 
-	// Test 6: Boundary test (exact grade)
 	std::cout << "\n--- Test 6: Boundary test (exact grade match) ---" << std::endl;
 	try
 	{
@@ -97,17 +92,16 @@ int main(void)
 		std::cout << "Error: " << e.what() << std::endl;
 	}
 
-	// Test 7: Multiple attempts on same form
 	std::cout << "\n--- Test 7: Multiple people, same form ---" << std::endl;
 	try
 	{
 		Form sharedForm("Shared", 75, 50);
-		Bureaucrat intern("Intern", 100); // Cannot sign
-		Bureaucrat boss("Boss", 25);	  // Can sign
+		Bureaucrat intern("Intern", 100);
+		Bureaucrat boss("Boss", 25);
 
 		std::cout << "Form: " << sharedForm << std::endl;
-		intern.signForm(sharedForm); // Should fail
-		boss.signForm(sharedForm);	 // Should succeed
+		intern.signForm(sharedForm);
+		boss.signForm(sharedForm);
 		std::cout << "Final: " << sharedForm << std::endl;
 	}
 	catch (const std::exception &e)

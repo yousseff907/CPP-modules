@@ -5,8 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yitani <yitani@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/19 00:08:52 by yitani            #+#    #+#             */
-/*   Updated: 2025/09/19 00:08:53 by yitani           ###   ########.fr       */
+/*   Created: 2025/09/25 22:43:06 by yitani            #+#    #+#             */
+/*   Updated: 2025/09/25 22:43:37 by yitani           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef EASYFIND_HPP
+# define EASYFIND_HPP
+
+#include <iostream>
+
+#endif

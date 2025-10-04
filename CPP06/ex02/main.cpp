@@ -6,7 +6,7 @@
 /*   By: yitani <yitani@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 00:00:00 by yitani            #+#    #+#             */
-/*   Updated: 2025/09/18 20:01:28 by yitani           ###   ########.fr       */
+/*   Updated: 2025/10/02 20:51:43 by yitani           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,21 +48,21 @@ void identify(Base &p)
 	std::cout << "Object refered to: ";
 	try
 	{
-		dynamic_cast<A &>(p);
+		(void)dynamic_cast<A &>(p);
 		std::cout << "A" << std::endl;
 	}
 	catch(...)
 	{
 		try
 		{
-			dynamic_cast<B &>(p);
+			(void)dynamic_cast<B &>(p);
 			std::cout << "B" << std::endl;
 		}
 		catch(...)
 		{
 			try
 			{
-				dynamic_cast<C &>(p);
+				(void)dynamic_cast<C &>(p);
 				std::cout << "C" << std::endl;
 			}
 			catch(...)

@@ -6,12 +6,22 @@
 /*   By: yitani <yitani@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 10:52:54 by yitani            #+#    #+#             */
-/*   Updated: 2025/10/09 11:19:09 by yitani           ###   ########.fr       */
+/*   Updated: 2025/10/14 14:46:46 by yitani           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
 #include <limits>
+
+const char	*Span::SpanFullException::what() const throw()
+{
+	return ("Span is full");
+}
+
+const char	*Span::NoSpanException::what() const throw()
+{
+	return ("There is no span");
+}
 
 Span::Span()	:	_maxSize(0)	{}
 

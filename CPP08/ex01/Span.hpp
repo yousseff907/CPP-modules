@@ -6,7 +6,7 @@
 /*   By: yitani <yitani@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 10:38:43 by yitani            #+#    #+#             */
-/*   Updated: 2025/10/09 11:22:19 by yitani           ###   ########.fr       */
+/*   Updated: 2025/10/14 14:46:36 by yitani           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,19 +40,13 @@ class Span
 		class SpanFullException : public std::exception
 		{
 			public:
-				virtual const char *what() const throw()
-				{
-					return ("Span is full");
-				}
+				virtual const char *what() const throw();
 		};
 
 		class NoSpanException : public std::exception
 		{
 			public:
-				virtual const char *what() const throw()
-				{
-					return ("There is no span");
-				}
+				virtual const char *what() const throw();
 		};
 };
 

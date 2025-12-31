@@ -6,7 +6,7 @@
 /*   By: yitani <yitani@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 12:51:21 by yitani            #+#    #+#             */
-/*   Updated: 2025/12/30 21:11:20 by yitani           ###   ########.fr       */
+/*   Updated: 2025/12/30 22:03:26 by yitani           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ void	 BitcoinExchange::processInputFile(const std::string& fileName)
 		std::string	stringValue = line.substr(pos + 2);
 
 		if ((stringValue.find_first_of('.') != stringValue.find_last_of('.'))
+		|| stringValue[stringValue.length() - 1] == '.'
 		|| (stringValue.find_first_not_of("0123456789.-") != std::string::npos)
 		|| ((stringValue.find('-') != std::string::npos) && stringValue[0] != '-'))
 		{

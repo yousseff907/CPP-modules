@@ -6,7 +6,7 @@
 #    By: yitani <yitani@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/18 21:36:06 by yitani            #+#    #+#              #
-#    Updated: 2025/10/15 12:52:00 by yitani           ###   ########.fr        #
+#    Updated: 2026/01/01 00:17:36 by yitani           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME = RPN
 CPP = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98 -g
 
-SRCS = main.cpp
+SRCS = main.cpp RPN.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)

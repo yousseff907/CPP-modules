@@ -6,7 +6,7 @@
 /*   By: yitani <yitani@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/31 23:56:16 by yitani            #+#    #+#             */
-/*   Updated: 2026/01/01 00:17:58 by yitani           ###   ########.fr       */
+/*   Updated: 2026/01/01 09:50:57 by yitani           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ class RPN
 		RPN &operator=(const RPN &other);
 		~RPN();
 
-		void	calculate(const std::string &expression);
+		int		calculate(const std::string &expression);
 };
 
 #endif

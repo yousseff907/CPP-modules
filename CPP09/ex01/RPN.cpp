@@ -6,7 +6,7 @@
 /*   By: yitani <yitani@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/31 23:57:10 by yitani            #+#    #+#             */
-/*   Updated: 2026/01/01 00:22:27 by yitani           ###   ########.fr       */
+/*   Updated: 2026/01/01 09:55:52 by yitani           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int		RPN::performOperation(int a, int b, std::string op)
 	}
 }
 
-void	RPN::calculate(const std::string &expression)
+int		RPN::calculate(const std::string &expression)
 {
 	std::istringstream	iss(expression);
 	std::string			token;
@@ -88,5 +88,5 @@ void	RPN::calculate(const std::string &expression)
 		std::cerr << "Error" << std::endl;
 		exit(1);
 	}
-	std::cout << stack.top() << std::endl;
+	return (stack.top());
 }

@@ -6,16 +6,16 @@
 #    By: yitani <yitani@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/18 21:36:06 by yitani            #+#    #+#              #
-#    Updated: 2025/10/11 21:33:13 by yitani           ###   ########.fr        #
+#    Updated: 2026/01/21 12:40:32 by yitani           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = Mutated-abomination
+NAME = PmergeMe
 
 CPP = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98 -g
 
-SRCS = main.cpp
+SRCS = main.cpp PmergeMe.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)

@@ -6,7 +6,7 @@
 /*   By: yitani <yitani@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 16:40:43 by yitani            #+#    #+#             */
-/*   Updated: 2026/01/21 13:03:27 by yitani           ###   ########.fr       */
+/*   Updated: 2026/01/23 00:01:31 by yitani           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <stdexcept>
 # include <limits.h>
 # include <sys/time.h>
+# include <cstdlib>
 
 class PmergeMe
 {
@@ -28,10 +29,17 @@ class PmergeMe
 		std::deque<int>		deq;
 		double vectorTime;
 		double dequeTime;
-
-		void	fordJohnsonSort(std::vector<int> vect);
-		void	fordJohnsonSort(std::deque<int> deq);
+		size_t	comparisons;
 		double	getCurrTime();
+
+	private:
+		template<typename Container>
+		void	binaryInsert(Container& container, int value, size_t maxPos);
+
+		template<typename Container>
+		void	fordJohnsonSort(Container& container);
+
+		std::vector<size_t>		generateJacobsthal(size_t n);
 
 	public:
 		PmergeMe();

@@ -6,7 +6,7 @@
 /*   By: yitani <yitani@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 16:40:27 by yitani            #+#    #+#             */
-/*   Updated: 2026/01/23 00:38:42 by yitani           ###   ########.fr       */
+/*   Updated: 2026/01/23 12:31:41 by yitani           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -232,9 +232,28 @@ void PmergeMe::sort(void)
 	std::cout << "Deque comparisons: " << dequeComparisons << std::endl;
 }
 
-void	PmergeMe::displayResults(void)
+template <typename Iterator>
+bool isSorted(Iterator begin, Iterator end)
 {
-	long long	size = inputNumbers.size();
+	if (begin == end)
+		return true;
+
+	Iterator next = begin;
+	++next;
+
+	while (next != end)
+	{
+		if (*next < *begin)
+			return false;
+		++begin;
+		++next;
+	}
+	return true;
+}
+
+void PmergeMe::displayResults(void)
+{
+	long long size = inputNumbers.size();
 	std::cout << "Before: ";
 	for (size_t i = 0; i < inputNumbers.size(); i++)
 	{
@@ -250,4 +269,13 @@ void	PmergeMe::displayResults(void)
 	std::cout << std::endl;
 	std::cout << "Time to process a range of " << size << " elements with std::vector<int> : " << vectorTime << " μs" << std::endl;
 	std::cout << "Time to process a range of " << size << " elements with std::deque<int> : " << dequeTime << " μs" << std::endl;
+	if (isSorted(vect.begin(), vect.end()))
+		std::cout << "Vector is sorted! ✓" << std::endl;
+	else
+		std::cout << "Vector is NOT sorted! ✗" << std::endl;
+
+	if (isSorted(deq.begin(), deq.end()))
+		std::cout << "Deque is sorted! ✓" << std::endl;
+	else
+		std::cout << "Deque is NOT sorted! ✗" << std::endl;
 }

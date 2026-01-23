@@ -6,7 +6,7 @@
 /*   By: yitani <yitani@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 16:40:27 by yitani            #+#    #+#             */
-/*   Updated: 2026/01/23 00:28:27 by yitani           ###   ########.fr       */
+/*   Updated: 2026/01/23 00:38:42 by yitani           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,12 +181,12 @@ void	PmergeMe::fordJohnsonSort(Container& container)
 	}
 
 	container.clear();
-	container.push_back(pairs[0].second);
+	container.push_back(sortedLosers[0]);
 	for (size_t i = 0; i < mainChain.size(); i++)
 		container.push_back(mainChain[i]);
 
 	std::vector<size_t> Jacobsthal = generateJacobsthal(pairs.size() - 1);
-	
+
 	size_t	prevJacob = 1;
 	for (size_t i = 0; i < Jacobsthal.size(); i++)
 	{
@@ -196,7 +196,7 @@ void	PmergeMe::fordJohnsonSort(Container& container)
 
 		for (int j = currentJacob - 1; j >= (int)prevJacob; j--)
 		{
-			binaryInsert(container, sortedLosers[j], findPositionInContainer(container, pairs[j].first));
+			binaryInsert(container, sortedLosers[j], findPositionInContainer(container, mainChain[j]));
 		}
 
 		prevJacob = currentJacob;
@@ -204,7 +204,7 @@ void	PmergeMe::fordJohnsonSort(Container& container)
 
 	for (size_t j = prevJacob; j < pairs.size(); j++)
 	{
-		binaryInsert(container, sortedLosers[j], findPositionInContainer(container, pairs[j].first));
+		binaryInsert(container, sortedLosers[j], findPositionInContainer(container, mainChain[j]));
 	}
 
 	if (hasStraggler)

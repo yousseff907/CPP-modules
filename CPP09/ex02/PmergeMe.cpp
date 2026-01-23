@@ -6,7 +6,7 @@
 /*   By: yitani <yitani@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 16:40:27 by yitani            #+#    #+#             */
-/*   Updated: 2026/01/23 12:31:41 by yitani           ###   ########.fr       */
+/*   Updated: 2026/01/23 12:37:07 by yitani           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ PmergeMe::PmergeMe(const PmergeMe &other)
 	this->dequeTime = other.dequeTime;
 }
 
-PmergeMe&	PmergeMe::operator=(const PmergeMe &other)
+PmergeMe &PmergeMe::operator=(const PmergeMe &other)
 {
 	if (this != &other)
 	{
@@ -44,7 +44,8 @@ PmergeMe&	PmergeMe::operator=(const PmergeMe &other)
 }
 
 PmergeMe::~PmergeMe()
-{}
+{
+}
 
 double PmergeMe::getCurrTime()
 {
@@ -64,7 +65,7 @@ void PmergeMe::parseInput(int argc, char **argv)
 
 		if (arg.find_first_not_of("0123456789") != std::string::npos)
 			throw std::invalid_argument("Invalid Input");
-		
+
 		long long num = std::atoi(arg.c_str());
 		if (num <= 0 || num > INT_MAX)
 			throw std::invalid_argument("Invalid Input");
@@ -75,39 +76,34 @@ void PmergeMe::parseInput(int argc, char **argv)
 	}
 }
 
-std::vector<size_t>		PmergeMe::generateJacobsthal(size_t n)
+std::vector<size_t> PmergeMe::generateJacobsthal(size_t n)
 {
 	std::vector<size_t> jacobsthal;
-	size_t	i = 2;
-		
-	if (n < 3)
-		return (jacobsthal);
-	
+	if (n == 0)
+		return jacobsthal;
+
+	jacobsthal.push_back(0);
+	if (n == 1)
+		return jacobsthal;
+
 	jacobsthal.push_back(1);
-	jacobsthal.push_back(1);
-	jacobsthal.push_back(3);
-	while (jacobsthal[i] < n)
+	while (jacobsthal.back() < n)
 	{
-		size_t	next = jacobsthal[i] + (2 * jacobsthal[i - 1]);
-
-		if (next > n)
-			break;
-
+		size_t next = jacobsthal[jacobsthal.size() - 1] + 2 * jacobsthal[jacobsthal.size() - 2];
 		jacobsthal.push_back(next);
-		i++;
 	}
-	return (jacobsthal);
+	return jacobsthal;
 }
 
-template<typename Container>
-void	PmergeMe::binaryInsert(Container& container, int value, size_t maxPos)
+template <typename Container>
+void PmergeMe::binaryInsert(Container &container, int value, size_t maxPos)
 {
-	size_t	left = 0;
-	size_t	right = maxPos;
-	
+	size_t left = 0;
+	size_t right = maxPos;
+
 	while (left < right)
 	{
-		size_t	mid = left + (right - left) / 2;
+		size_t mid = left + (right - left) / 2;
 
 		comparisons++;
 		if (container[mid] < value)
@@ -119,8 +115,8 @@ void	PmergeMe::binaryInsert(Container& container, int value, size_t maxPos)
 	container.insert(container.begin() + left, value);
 }
 
-template<typename Container>
-size_t	findPositionInContainer(Container &container, int value)
+template <typename Container>
+size_t findPositionInContainer(Container &container, int value)
 {
 	for (size_t i = 0; i < container.size(); i++)
 	{
@@ -130,11 +126,11 @@ size_t	findPositionInContainer(Container &container, int value)
 	return container.size();
 }
 
-template<typename Container>
-void	PmergeMe::fordJohnsonSort(Container& container)
+template <typename Container>
+void PmergeMe::fordJohnsonSort(Container &container)
 {
 	if (container.size() <= 1)
-		return ;
+		return;
 
 	int straggler = -1;
 	bool hasStraggler = false;
@@ -146,8 +142,8 @@ void	PmergeMe::fordJohnsonSort(Container& container)
 		container.pop_back();
 	}
 
-	std::vector<std::pair<int, int> >	pairs;
-	for (size_t	i = 0; i < container.size(); i+=2)
+	std::vector<std::pair<int, int> > pairs;
+	for (size_t i = 0; i < container.size(); i += 2)
 	{
 		int a = container[i];
 		int b = container[i + 1];
@@ -159,7 +155,7 @@ void	PmergeMe::fordJohnsonSort(Container& container)
 			pairs.push_back(std::make_pair(b, a));
 	}
 
-	std::vector<int>	mainChain;
+	std::vector<int> mainChain;
 	for (size_t i = 0; i < pairs.size(); i++)
 	{
 		mainChain.push_back(pairs[i].first);
@@ -167,7 +163,7 @@ void	PmergeMe::fordJohnsonSort(Container& container)
 
 	fordJohnsonSort(mainChain);
 
-	std::vector<int>	sortedLosers;
+	std::vector<int> sortedLosers;
 	for (size_t i = 0; i < mainChain.size(); i++)
 	{
 		for (size_t j = 0; j < pairs.size(); j++)
@@ -180,35 +176,58 @@ void	PmergeMe::fordJohnsonSort(Container& container)
 		}
 	}
 
+	if (hasStraggler)
+		sortedLosers.push_back(straggler);
+
 	container.clear();
 	container.push_back(sortedLosers[0]);
 	for (size_t i = 0; i < mainChain.size(); i++)
 		container.push_back(mainChain[i]);
+	std::vector<size_t> jacobSequence = generateJacobsthal(sortedLosers.size());
+	std::vector<size_t> insertionOrder;
+	std::vector<bool> used(sortedLosers.size() + 1, false);
 
-	std::vector<size_t> Jacobsthal = generateJacobsthal(pairs.size() - 1);
-
-	size_t	prevJacob = 1;
-	for (size_t i = 0; i < Jacobsthal.size(); i++)
+	for (size_t i = 0; i < jacobSequence.size(); i++)
 	{
-		size_t currentJacob = Jacobsthal[i];
-		if (currentJacob > pairs.size())
-			currentJacob = pairs.size();
-
-		for (int j = currentJacob - 1; j >= (int)prevJacob; j--)
+		size_t x = jacobSequence[i];
+		while (x > 1 && x <= sortedLosers.size())
 		{
-			binaryInsert(container, sortedLosers[j], findPositionInContainer(container, mainChain[j]));
+			if (!used[x])
+			{
+				insertionOrder.push_back(x);
+				used[x] = true;
+			}
+			x--;
+		}
+	}
+
+	for (size_t x = 2; x <= sortedLosers.size(); x++)
+	{
+		if (!used[x])
+			insertionOrder.push_back(x);
+	}
+
+	size_t searchLimit = 3;
+
+	for (size_t i = 0; i < insertionOrder.size(); i++)
+	{
+		if (i > 0 && insertionOrder[i] > insertionOrder[i - 1])
+		{
+			if (searchLimit <= container.size() / 2)
+				searchLimit = 2 * searchLimit + 1;
+			else
+				searchLimit = container.size();
 		}
 
-		prevJacob = currentJacob;
+		if (insertionOrder[i] <= sortedLosers.size() && insertionOrder[i] != 1)
+		{
+			size_t pendIndex = insertionOrder[i] - 1;
+			size_t maxSearchPos = std::min(searchLimit, container.size());
+			if (maxSearchPos > container.size())
+				maxSearchPos = container.size();
+			binaryInsert(container, sortedLosers[pendIndex], maxSearchPos);
+		}
 	}
-
-	for (size_t j = prevJacob; j < pairs.size(); j++)
-	{
-		binaryInsert(container, sortedLosers[j], findPositionInContainer(container, mainChain[j]));
-	}
-
-	if (hasStraggler)
-		binaryInsert(container, straggler, container.size());
 }
 
 void PmergeMe::sort(void)

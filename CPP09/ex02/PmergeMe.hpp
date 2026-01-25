@@ -6,7 +6,7 @@
 /*   By: yitani <yitani@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 16:40:43 by yitani            #+#    #+#             */
-/*   Updated: 2026/01/23 00:01:31 by yitani           ###   ########.fr       */
+/*   Updated: 2026/01/23 22:09:21 by yitani           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ class PmergeMe
 		template<typename Container>
 		void	binaryInsert(Container& container, int value, size_t maxPos);
 
-		template<typename Container>
-		void	fordJohnsonSort(Container& container);
+		void	fordJohnsonSort(std::vector<int> &container);
+		void	fordJohnsonSort(std::deque<int>	&container);
 
 		std::vector<size_t>		generateJacobsthal(size_t n);
 

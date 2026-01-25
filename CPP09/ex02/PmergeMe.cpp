@@ -6,7 +6,7 @@
 /*   By: yitani <yitani@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 16:40:27 by yitani            #+#    #+#             */
-/*   Updated: 2026/01/23 12:37:07 by yitani           ###   ########.fr       */
+/*   Updated: 2026/01/23 22:10:29 by yitani           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,19 +115,110 @@ void PmergeMe::binaryInsert(Container &container, int value, size_t maxPos)
 	container.insert(container.begin() + left, value);
 }
 
-template <typename Container>
-size_t findPositionInContainer(Container &container, int value)
+void	PmergeMe::fordJohnsonSort(std::deque<int>	&container)
 {
-	for (size_t i = 0; i < container.size(); i++)
+	if (container.size() <= 1)
+		return;
+
+	int straggler = -1;
+	bool hasStraggler = false;
+
+	if (container.size() % 2 != 0)
 	{
-		if (container[i] == value)
-			return i;
+		straggler = container.back();
+		hasStraggler = true;
+		container.pop_back();
 	}
-	return container.size();
+
+	std::deque<std::pair<int, int> > pairs;
+	for (size_t i = 0; i < container.size(); i += 2)
+	{
+		int a = container[i];
+		int b = container[i + 1];
+
+		comparisons++;
+		if (a > b)
+			pairs.push_back(std::make_pair(a, b));
+		else
+			pairs.push_back(std::make_pair(b, a));
+	}
+
+	std::deque<int> mainChain;
+	for (size_t i = 0; i < pairs.size(); i++)
+	{
+		mainChain.push_back(pairs[i].first);
+	}
+
+	fordJohnsonSort(mainChain);
+
+	std::deque<int> sortedLosers;
+	for (size_t i = 0; i < mainChain.size(); i++)
+	{
+		for (size_t j = 0; j < pairs.size(); j++)
+		{
+			if (mainChain[i] == pairs[j].first)
+			{
+				sortedLosers.push_back(pairs[j].second);
+				break;
+			}
+		}
+	}
+
+	if (hasStraggler)
+		sortedLosers.push_back(straggler);
+
+	container.clear();
+	container.push_back(sortedLosers[0]);
+	for (size_t i = 0; i < mainChain.size(); i++)
+		container.push_back(mainChain[i]);
+	std::vector<size_t> jacobSequence = generateJacobsthal(sortedLosers.size());
+	std::deque<size_t> insertionOrder;
+	std::deque<bool> used(sortedLosers.size() + 1, false);
+
+	for (size_t i = 0; i < jacobSequence.size(); i++)
+	{
+		size_t x = jacobSequence[i];
+		while (x > 1 && x <= sortedLosers.size())
+		{
+			if (!used[x])
+			{
+				insertionOrder.push_back(x);
+				used[x] = true;
+			}
+			x--;
+		}
+	}
+
+	for (size_t x = 2; x <= sortedLosers.size(); x++)
+	{
+		if (!used[x])
+			insertionOrder.push_back(x);
+	}
+
+	size_t searchLimit = 3;
+
+	for (size_t i = 0; i < insertionOrder.size(); i++)
+	{
+		if (i > 0 && insertionOrder[i] > insertionOrder[i - 1])
+		{
+			if (searchLimit <= container.size() / 2)
+				searchLimit = 2 * searchLimit + 1;
+			else
+				searchLimit = container.size();
+		}
+
+		if (insertionOrder[i] <= sortedLosers.size() && insertionOrder[i] != 1)
+		{
+			size_t pendIndex = insertionOrder[i] - 1;
+			size_t maxSearchPos = std::min(searchLimit, container.size());
+			if (maxSearchPos > container.size())
+				maxSearchPos = container.size();
+			binaryInsert(container, sortedLosers[pendIndex], maxSearchPos);
+		}
+	}
 }
 
-template <typename Container>
-void PmergeMe::fordJohnsonSort(Container &container)
+void PmergeMe::fordJohnsonSort(std::vector<int> &container)
 {
 	if (container.size() <= 1)
 		return;

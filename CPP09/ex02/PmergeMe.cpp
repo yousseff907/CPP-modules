@@ -6,7 +6,7 @@
 /*   By: yitani <yitani@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 16:40:27 by yitani            #+#    #+#             */
-/*   Updated: 2026/01/23 22:10:29 by yitani           ###   ########.fr       */
+/*   Updated: 2026/01/25 17:34:12 by yitani           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,12 @@ void PmergeMe::parseInput(int argc, char **argv)
 		if (num <= 0 || num > INT_MAX)
 			throw std::invalid_argument("Invalid Input");
 
+		for (size_t j = 0; j < inputNumbers.size(); j++)
+		{
+			if (inputNumbers[j] == (int)num)
+				throw std::invalid_argument("Error: duplicate values");
+		}
+			
 		this->inputNumbers.push_back((int)num);
 		this->vect.push_back((int)num);
 		this->deq.push_back((int)num);
